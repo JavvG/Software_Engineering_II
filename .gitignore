@@ -1,13 +1,14 @@
 # Visual Studio
 .vs/
-.vscode/
-.idea/
 
 # Build Results
 [Tt]ienda[Aa]pp/[Bb]in/
 [Tt]ienda[Aa]pp/[Oo]bj/
 [Tt]ienda[Aa]pp.[Tt]ests/[Bb]in/
 [Tt]ienda[Aa]pp.[Tt]ests/[Oo]bj/
+
+# Solution files
+*.sln
 
 # User-specific files
 *.rsuser
