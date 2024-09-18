@@ -24,12 +24,12 @@ namespace TiendaApp.Clases
         public Producto BuscarProducto(string nombre)
         {
             if (string.IsNullOrEmpty(nombre))
-                throw new ArgumentException("El nombre no puede ser nulo o vac o.");
+                throw new ArgumentException("El nombre no puede ser nulo o vacío.");
 
             var producto = Inventario.FirstOrDefault(p => p.Nombre == nombre);
 
             if (producto == null)
-                throw new InvalidOperationException($"El producto con el nombre '{nombre}' no se encontr  en el inventario.");
+                throw new InvalidOperationException($"El producto con el nombre '{nombre}' no se encontró  en el inventario.");
 
             return producto;
         }
@@ -38,7 +38,7 @@ namespace TiendaApp.Clases
         {
 
             if (string.IsNullOrEmpty(nombre))
-                throw new ArgumentException("El nombre no puede ser nulo o vac o.");
+                throw new ArgumentException("El nombre no puede ser nulo o vacío.");
 
             var producto = BuscarProducto(nombre);
 
