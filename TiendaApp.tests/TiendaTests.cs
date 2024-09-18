@@ -163,10 +163,10 @@ namespace TiendaApp.Tests
             Assert.Equal(1200.0, productoBuscado.Precio);  // Asume que se actualiza el precio si hay duplicados
         }
 
-        // Uso de mocks
+        // Pruebas unitarias usando instancias simuladas de clases (mocks)
 
         [Fact]
-        public void AplicarDescuento_DeberiaActualizarPrecioDelProducto()
+        public void AplicarDescuento_DeberiaActualizarPrecioDelProductoMock()       // Prueba que verifica que el método 'ActualizarPrecio' del mock se llama correctamente con el nuevo valor de precio.
         {
             // Arrange: preparación del entorno de prueba
             var mockProducto = new Mock<Producto>("NombreProducto", 100.0, "Categoria");        // Se crea una instancia simulada (mock) de la clase 'Producto'
@@ -176,9 +176,58 @@ namespace TiendaApp.Tests
             // Act: ejecución de la prueba
             tienda.AplicarDescuento("NombreProducto", (float)10.0);     // Se invoca el método para aplicar el descuento usando el nombre del mock del producto y el porcentaje de descuento
 
-            // Assert: verifica que el método ActualizarPrecio fue llamado con el nuevo precio esperado
+            // Assert: verifica que el método ActualizarPrecio fue llamado en el mock con el nuevo precio esperado
             mockProducto.Verify(p => p.ActualizarPrecio(90.0), Times.Once);
         }
 
+        [Fact]
+        public void AgregarProducto_ConMock_DeberiaAgregarProductoAlInventarioMock()        // Verifica que el método 'AgregarProducto' se llama con el mock de Producto como parámetro. 
+                                                                                            // En un entorno de prueba real, creo que sería más conveniente testear con instancias reales en lugar de mocks
+        {
+            // Arrange: se preparan dos mocks, uno para la clase 'Producto' y otro para 'Tienda'
+            var mockProducto = new Mock<Producto>("NombreProducto", 100.0, "Categoria");
+            var mockTienda = new Mock<Tienda>();
+
+            // Act
+            mockTienda.Object.AgregarProducto(mockProducto.Object);
+
+            // Assert
+            mockTienda.Verify(t => t.AgregarProducto(mockProducto.Object), Times.Once);     // Se verifica que el método AgregarProducto se haya llamado desde el mock de 'Tienda' con el mock de 'Producto' como parámetro, una única vez
+        }
+
+        [Fact]
+        public void BuscarProducto_ConMock_DeberiaDevolverProductoDelInventarioMock()       // Verifica que el método 'BuscarProducto' devuelve el producto correcto usando un mock.
+        {
+            // Arrange
+            var mockProducto = new Mock<Producto>("NombreProducto", 100.0, "Categoria");
+            var mockTienda = new Mock<Tienda>();
+
+            mockTienda.Setup(t => t.BuscarProducto("NombreProducto")).Returns(mockProducto.Object);     // Se configura el mock de 'Tienda' para que retorne el mock de 'Producto' cuando se invoque el método de búsqueda
+
+            // Act
+            var productoBuscado = mockTienda.Object.BuscarProducto("NombreProducto");
+
+            // Assert
+            Assert.NotNull(productoBuscado);        // Verifica que el producto no sea nulo
+            Assert.Equal("NombreProducto", productoBuscado.Nombre);         // Verifica que el nombre sea el esperado
+            mockTienda.Verify(t => t.BuscarProducto("NombreProducto"), Times.Once);         // Verifica que el método se llame una única vez 
+        }
+
+        [Fact]
+        public void EliminarProducto_ConMock_DeberiaEliminarProductoMock()              // Verifica que el método 'EliminarProducto' se llama correctamente en el mock de la tienda.
+                                                                                        // En condiciones reales, creo que debería probarse con instancias reales
+        {
+            // Arrange
+            var mockProducto = new Mock<Producto>("ProductoAEliminar", 100.0, "Categoria");
+            var mockTienda = new Mock<Tienda>();
+
+            mockTienda.Object.AgregarProducto(mockProducto.Object);
+
+            // Act
+            mockTienda.Object.EliminarProducto("ProductoAEliminar");
+
+            // Assert
+            mockTienda.Verify(t => t.EliminarProducto("ProductoAEliminar"), Times.Once);        // Verifica que el método de eliminación se invoca desde el mock de 'Tienda' con el nombre del mock de 'Producto' como parámetro, una única vez
+        }
     }
 }
