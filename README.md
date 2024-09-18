@@ -48,3 +48,37 @@ Una vez que la prueba pasa, se puede refactorizar el código mínimo escrito par
 #### 4. Repetir el proceso
 
 Los pasos anteriores deben repetirse para cada nueva funcionalidad o modificaciones en el código que deba ser probado. Cada nueva funcionalidad debe ser probada mediante el enfoque TDD para garantizar que el código cumpla con los requisitos especificados y funcione correctamente.
+
+
+## 3. Uso de mocks
+
+Se implementaron algunos métodos de prueba individual que utilizan instancias simuladas (mocks) de las clases `Producto` y `Tienda`. Se puede discutir el uso de estas entidades para hacer pruebas, puesto que en situaciones reales resulta más conveniente usar instancias reales para testear el funcionamiento de cada método, no obstante se trató de hacer una adaptación de las pruebas para el uso de mocks.
+
+#### ¿Se pueden identificar 'Controladores' y 'Resguardos'?
+
+En lo que va del proyecto, pueden identificarse los siguientes conceptos:
+
+### Controladores
+
+Son aquellas clases y métodos que se encargan de gestionar el flujo de la lógica de negocio y la interacción entre las distintas entidades. En este caso, la clase `Tienda` actúa como **controlador**, puesto que ésta se encarga de la gestión de operaciones como agregar, buscar y eliminar productos (la lógica de negocio central).
+
+### Resguardos
+
+Son mecanismos que se encargan de proteger la integridad de los datos y de asegurar el flujo correcto de la aplicación. Están representados por las validaciones y manejo de excepciones que garantizan el correcto funcionamiento del sistema frente a entradas o situaciones inválidas. 
+En este caso, los métodos de la clase `Tienda` contienen **resguardos**, por ejemplo, cuando se realizan validaciones para evitar la inserción de productos nulos en el inventario de la tienda, o la búsqueda de productos inexistentes (métodos como `AgregarProducto` que lanza una excepción `ArgumentNullException` cuando se intenta ingresar un producto nulo, por ejemplo).
+
+#### ¿Qué es un 'mock'? ¿Hay otros nombres para los objetos/funciones simulados?
+
+Un **mock** es un objeto simulado, y se utiliza para realizar pruebas unitarias para representar el **comportamiento** de una clase o componente real. En esencia, es una simulación de una clase, que imita su comportamiento.
+Los mocks se usan para facilitar las pruebas de componentes que tienen dependencias, ya que el programa va a utilizar los objetos simulados, en lugar de instancias reales, y así ver la interacción que tendría con otros componentes.
+Otros nombres que reciben estos objetos simulados, son:
+
+- **Fakes:** versiones simplificadas de una implementación. Reemplazan una dependendia durante las pruebas.Simulan el comportamiento de objetos reales.
+- **Stubs:** objetos simulados que siempre devuelven respuestas predefinidas.
+- **Spies:** objetos que permiten verificar si ciertos métodos han sido llamados y cuántas veces. Se utilizan para verificar las interacciones con un objeto.
+- **Dummies:** objetos simulados que no se usan de forma activa durante las pruebas, pero que son necesarios para completar un método. Se pasan como argumentos y no se utilizan.
+
+Algunos ejemplos que se utilizadon en este proyecto:
+
+- `mockTienda.Setup(t => t.BuscarProducto("NombreProducto")).Returns(mockProducto.Object);`, es un ejemplo de **stub**, puesto que se configura para que siempre devuelva la misma respuesta.
+- `mockTienda.Verify(t => t.BuscarProducto("NombreProducto"), Times.Once);`, si bien es un **stub**, también tiene un comportamiento **spy**.
