@@ -40,5 +40,16 @@ namespace TiendaApp.tests
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new Producto("Laptop", 1000.0, null));
         }
+
+        [Fact]
+        public void ActualizarPrecio_PrecioNegativo_LanzaArgumentException()        // Verifica si se lanza la excepción correspondiente cuando se intenta actualizar el precio de un producto con un valor negativo
+        {
+            // Arrange
+            var producto = new Producto("Laptop", 1000.0, "Electronics");
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => producto.ActualizarPrecio(-500.0));
+        }
+
     }
 }
