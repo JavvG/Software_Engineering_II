@@ -28,10 +28,10 @@ namespace TiendaApp.Clases
 
             var producto = Inventario.FirstOrDefault(p => p.Nombre == nombre);
 
-            if (producto == null)
-                throw new InvalidOperationException($"El producto con el nombre '{nombre}' no se encontró  en el inventario.");
+            if (producto != null)
+                return producto;
 
-            return producto;
+            throw new InvalidOperationException($"El producto con el nombre '{nombre}' no se encontró  en el inventario.");
         }
 
         public bool EliminarProducto(string nombre)
