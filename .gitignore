@@ -1,0 +1,51 @@
+# Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# Build Results
+[Tt]ienda[Aa]pp/[Bb]in/
+[Tt]ienda[Aa]pp/[Oo]bj/
+[Tt]ienda[Aa]pp.[Tt]ests/[Bb]in/
+[Tt]ienda[Aa]pp.[Tt]ests/[Oo]bj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Logs
+*.log
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Npm packages (in case you use JS frameworks for frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Test Results
+[Tt]ienda[Aa]pp.[Tt]ests/TestResults/
