@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TiendaApp",
+    "\\TiendaApp.tests"
   ],
+  "SelectedNode": "\\TiendaApp",
   "PreviewInSolutionExplorer": false
 }
