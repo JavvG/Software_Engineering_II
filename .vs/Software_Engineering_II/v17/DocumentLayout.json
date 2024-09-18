@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\javie\\source\\repositories\\Software_Engineering_II\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\javie\\source\\repositories\\Software_Engineering_II\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\javie\\source\\repositories\\Software_Engineering_II\\TiendaApp\\Clases\\Producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TiendaApp\\Clases\\Producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\javie\\source\\repositories\\Software_Engineering_II\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\javie\\source\\repositories\\Software_Engineering_II\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-18T04:02:06.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Producto.cs",
               "DocumentMoniker": "C:\\Users\\javie\\source\\repositories\\Software_Engineering_II\\TiendaApp\\Clases\\Producto.cs",
               "RelativeDocumentMoniker": "TiendaApp\\Clases\\Producto.cs",
@@ -38,12 +55,11 @@
               "RelativeToolTip": "TiendaApp\\Clases\\Producto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T01:12:05.225Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T01:12:05.225Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Tienda.cs",
               "DocumentMoniker": "C:\\Users\\javie\\source\\repositories\\Software_Engineering_II\\TiendaApp\\Clases\\Tienda.cs",
               "RelativeDocumentMoniker": "TiendaApp\\Clases\\Tienda.cs",
@@ -51,8 +67,7 @@
               "RelativeToolTip": "TiendaApp\\Clases\\Tienda.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAiwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T01:11:20.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T01:11:20.224Z"
             }
           ]
         }
