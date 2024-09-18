@@ -44,5 +44,23 @@ namespace TiendaApp.Clases
 
             return Inventario.Remove(producto);
         }
+
+        public void AplicarDescuento(string nombre, float porcentaje)
+        {
+            if(string.IsNullOrEmpty(nombre))
+                throw new ArgumentException("El nombre del producto no puede ser nulo o vacío.");
+
+            if (porcentaje <= 0)
+                throw new ArgumentException("El porcentaje no puede ser cero ni negativo.");
+
+            if (porcentaje > 100)
+                throw new ArgumentException("El porcentaje no puede ser superior a 100.");
+
+            var producto = BuscarProducto(nombre);
+
+            double nuevoPrecio = producto.Precio * (1 - porcentaje / 100);
+
+            producto.ActualizarPrecio(nuevoPrecio);
+        }
     }
 }
