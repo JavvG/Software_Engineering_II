@@ -1,6 +1,7 @@
 ﻿using System;
 using TiendaApp.Clases;
 using Xunit;
+using Moq;
 
 namespace TiendaApp.Tests
 {
@@ -161,5 +162,23 @@ namespace TiendaApp.Tests
             Assert.Equal("Laptop", productoBuscado.Nombre);     // Verifica que los productos tengan el mismo nombre
             Assert.Equal(1200.0, productoBuscado.Precio);  // Asume que se actualiza el precio si hay duplicados
         }
+
+        // Uso de mocks
+
+        [Fact]
+        public void AplicarDescuento_DeberiaActualizarPrecioDelProducto()
+        {
+            // Arrange: preparación del entorno de prueba
+            var mockProducto = new Mock<Producto>("NombreProducto", 100.0, "Categoria");        // Se crea una instancia simulada (mock) de la clase 'Producto'
+            var tienda = new Tienda();
+            tienda.AgregarProducto(mockProducto.Object);        // El mock del producto se añade al inventario de la instancia de 'Tienda'
+
+            // Act: ejecución de la prueba
+            tienda.AplicarDescuento("NombreProducto", (float)10.0);     // Se invoca el método para aplicar el descuento usando el nombre del mock del producto y el porcentaje de descuento
+
+            // Assert: verifica que el método ActualizarPrecio fue llamado con el nuevo precio esperado
+            mockProducto.Verify(p => p.ActualizarPrecio(90.0), Times.Once);
+        }
+
     }
 }
