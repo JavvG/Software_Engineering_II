@@ -9,9 +9,6 @@ obj/
 [Tt]ienda[Aa]pp.[Tt]ests/[Bb]in/
 [Tt]ienda[Aa]pp.[Tt]ests/[Oo]bj/
 
-# Solution files
-*.sln
-
 # User-specific files
 *.rsuser
 *.suo
