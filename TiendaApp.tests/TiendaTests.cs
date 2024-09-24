@@ -63,11 +63,9 @@ namespace TiendaApp.Tests
         [Fact]
         public void BuscarProducto_ProductoNoExiste_LanzaInvalidOperationException()        // Verifica si se lanza la excepción correspondiente si al buscarse un producto este no existe
         {
-            // Arrange
-            var tienda = new Tienda();
 
             // Act & Assert
-            Assert.Throws<InvalidOperationException>(() => tienda.BuscarProducto("NoExiste"));
+            Assert.Throws<InvalidOperationException>(() => _tienda.BuscarProducto("NoExiste"));
         }
 
         [Fact]
