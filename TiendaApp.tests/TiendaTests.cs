@@ -110,13 +110,12 @@ namespace TiendaApp.Tests
         public void EliminarProducto_NombreNulo_LanzaArgumentException()        // Verifica si se lanza la excepción correspondiente al intentar eliminar un producto cuyo parámetro nombre es vacío/nulo
         {
             // Arrange
-            var tienda = new Tienda();
             var producto = new Producto("Smartwatch", 200.0, "Electronics");
-            tienda.AgregarProducto(producto);
+            _tienda.AgregarProducto(producto);
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => tienda.EliminarProducto(null));
-            Assert.Throws<ArgumentException>(() => tienda.EliminarProducto(""));
+            Assert.Throws<ArgumentException>(() => _tienda.EliminarProducto(null));
+            Assert.Throws<ArgumentException>(() => _tienda.EliminarProducto(""));
         }
 
         [Fact]
