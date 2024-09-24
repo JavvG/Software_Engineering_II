@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,21 +24,21 @@ namespace TiendaApp.Clases
         public Producto BuscarProducto(string nombre)
         {
             if (string.IsNullOrEmpty(nombre))
-                throw new ArgumentException("El nombre no puede ser nulo o vacío.");
+                throw new ArgumentException("El nombre no puede ser nulo o vacÃ­o.");
 
             var producto = Inventario.FirstOrDefault(p => p.Nombre == nombre);
 
             if (producto != null)
                 return producto;
 
-            throw new InvalidOperationException($"El producto con el nombre '{nombre}' no se encontró  en el inventario.");
+            throw new InvalidOperationException($"El producto con el nombre '{nombre}' no se encontrÃ³  en el inventario.");
         }
 
         public bool EliminarProducto(string nombre)
         {
 
             if (string.IsNullOrEmpty(nombre))
-                throw new ArgumentException("El nombre no puede ser nulo o vacío.");
+                throw new ArgumentException("El nombre no puede ser nulo o vacÃ­o.");
 
             var producto = BuscarProducto(nombre);
 
@@ -47,8 +47,8 @@ namespace TiendaApp.Clases
 
         public void AplicarDescuento(string nombre, float porcentaje)
         {
-            if(string.IsNullOrEmpty(nombre))
-                throw new ArgumentException("El nombre del producto no puede ser nulo o vacío.");
+            if (string.IsNullOrEmpty(nombre))
+                throw new ArgumentException("El nombre del producto no puede ser nulo o vacÃ­o.");
 
             if (porcentaje <= 0)
                 throw new ArgumentException("El porcentaje no puede ser cero ni negativo.");
