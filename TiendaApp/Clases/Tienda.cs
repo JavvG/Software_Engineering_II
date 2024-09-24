@@ -13,15 +13,23 @@ namespace TiendaApp.Clases
             Inventario = new List<Producto>();
         }
 
-        public void AgregarProducto(Producto producto)
+        public virtual void AgregarProducto(Producto producto)
         {
             if (producto == null)
                 throw new ArgumentNullException(nameof(producto), "El producto no puede ser nulo.");
 
-            Inventario.Add(producto);
+            try
+            {
+                var productoExistente = BuscarProducto(producto.Nombre);
+                productoExistente.ActualizarPrecio(producto.Precio);        // Si el prpducto ya existe en los registros, se actualiza el precio
+            }
+            catch (InvalidOperationException)
+            {
+                Inventario.Add(producto);
+            }
         }
 
-        public Producto BuscarProducto(string nombre)
+        public virtual Producto BuscarProducto(string nombre)
         {
             if (string.IsNullOrEmpty(nombre))
                 throw new ArgumentException("El nombre no puede ser nulo o vacío.");
@@ -34,7 +42,7 @@ namespace TiendaApp.Clases
             throw new InvalidOperationException($"El producto con el nombre '{nombre}' no se encontró  en el inventario.");
         }
 
-        public bool EliminarProducto(string nombre)
+        public virtual bool EliminarProducto(string nombre)
         {
 
             if (string.IsNullOrEmpty(nombre))
