@@ -140,7 +140,7 @@ namespace TiendaApp.Tests
             // Arrange
             var producto1 = new Producto("Laptop", 1000.0, "Electronics");
             var producto2 = new Producto("Laptop", 1200.0, "Electronics");
-            _tienda.AgregarProducto(producto1);
+            _tienda.AgregarProducto(producto1);                      // Se añade los productos creados anteriormente al Fixture de Tienda
 
             // Act
             _tienda.AgregarProducto(producto2);
