@@ -129,11 +129,9 @@ namespace TiendaApp.Tests
         [Fact]
         public void EliminarProducto_SinProductos_NoCambio()        // Verifica que eliminar no afecte cuando no hay productos en el inventario
         {
-            // Arrange
-            var tienda = new Tienda();
 
             // Act & Assert
-            Assert.Throws<InvalidOperationException>(() => tienda.EliminarProducto("NoExiste"));        // Verifica que el intento de eliminación falló y que se lanzó la excepción correspondiente al no encontrarse el producto
+            Assert.Throws<InvalidOperationException>(() => _tienda.EliminarProducto("NoExiste"));        // Verifica que el intento de eliminación falló y que se lanzó la excepción correspondiente al no encontrarse el producto
         }
 
         [Fact]
