@@ -159,11 +159,11 @@ namespace TiendaApp.Tests
         {
             // Arrange: preparación del entorno de prueba
             var mockProducto = new Mock<Producto>("NombreProducto", 100.0, "Categoria");        // Se crea una instancia simulada (mock) de la clase 'Producto'
-            var tienda = new Tienda();
-            tienda.AgregarProducto(mockProducto.Object);        // El mock del producto se añade al inventario de la instancia de 'Tienda'
+
+            _tienda.AgregarProducto(mockProducto.Object);        // El mock del producto se añade al inventario del Fixture de Tienda
 
             // Act: ejecución de la prueba
-            tienda.AplicarDescuento("NombreProducto", (float)10.0);     // Se invoca el método para aplicar el descuento usando el nombre del mock del producto y el porcentaje de descuento
+            _tienda.AplicarDescuento("NombreProducto", (float)10.0);     // Se invoca el método para aplicar el descuento usando el nombre del mock del producto y el porcentaje de descuento
 
             // Assert: verifica que el método ActualizarPrecio fue llamado en el mock con el nuevo precio esperado
             mockProducto.Verify(p => p.ActualizarPrecio(It.IsInRange(89.99, 90.01, Moq.Range.Inclusive)), Times.Once);      // Se usa sobrecarga del método Verify() para comparar los valores con una tolerancia
