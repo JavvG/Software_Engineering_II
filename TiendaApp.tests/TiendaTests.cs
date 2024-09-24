@@ -138,14 +138,13 @@ namespace TiendaApp.Tests
         public void AgregarProducto_Duplicado_ProductoAgregado()        // Verifica que un producto con el mismo nombre se pueda agregar al inventario
         {
             // Arrange
-            var tienda = new Tienda();
             var producto1 = new Producto("Laptop", 1000.0, "Electronics");
             var producto2 = new Producto("Laptop", 1200.0, "Electronics");
-            tienda.AgregarProducto(producto1);
+            _tienda.AgregarProducto(producto1);
 
             // Act
-            tienda.AgregarProducto(producto2);
-            var productoBuscado = tienda.BuscarProducto("Laptop");
+            _tienda.AgregarProducto(producto2);
+            var productoBuscado = _tienda.BuscarProducto("Laptop");
 
             // Assert
             Assert.NotNull(productoBuscado);        // Verifica que el producto exista
