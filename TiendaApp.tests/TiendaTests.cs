@@ -49,12 +49,11 @@ namespace TiendaApp.Tests
         public void BuscarProducto_ProductoExiste_ReturnsProducto()     // Verifica que un producto retorna de una búsqueda. Garantiza que un producto buscado existe
         {
             // Arrange
-            var tienda = new Tienda();
             var producto = new Producto("Tablet", 500.0, "Electronics");
-            tienda.AgregarProducto(producto);
+            _tienda.AgregarProducto(producto);
 
             // Act
-            var resultado = tienda.BuscarProducto("Tablet");
+            var resultado = _tienda.BuscarProducto("Tablet");
 
             // Assert
             Assert.NotNull(resultado);      // Verifica que el producto encontrado no sea nulo (exista)
