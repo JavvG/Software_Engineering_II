@@ -81,16 +81,16 @@ namespace TiendaApp.Tests
         public void EliminarProducto_ProductoExiste_SeElimina()     // Verifica si se elimina correctamente un producto del inventario
         {
             // Arrange
-            var tienda = new Tienda();
+
             var producto = new Producto("Smartphone", 800.0, "Electronics");
-            tienda.AgregarProducto(producto);
+            _tienda.AgregarProducto(producto);
 
             // Act
-            var eliminado = tienda.EliminarProducto("Smartphone");      // Se invoca el método de eliminación
+            var eliminado = _tienda.EliminarProducto("Smartphone");      // Se invoca el método de eliminación
 
             // Assert
             Assert.True(eliminado);     // Verifica si el producto se ha eliminado correctamente (evalúa el valor booleano retornado por el método)                   
-            Assert.Throws<InvalidOperationException>(() => tienda.BuscarProducto("Smartphone"));        // Verifica si se lanza la correspondiente excepción al no encontrarse el producto en el inventario
+            Assert.Throws<InvalidOperationException>(() => _tienda.BuscarProducto("Smartphone"));        // Verifica si se lanza la correspondiente excepción al no encontrarse el producto en el inventario
         }
 
         [Fact]
