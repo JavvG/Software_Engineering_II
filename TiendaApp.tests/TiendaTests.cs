@@ -121,11 +121,9 @@ namespace TiendaApp.Tests
         [Fact]
         public void BuscarProducto_SinProductos_NoEncuentra()       // Verifica la búsqueda en un inventario vacío
         {
-            // Arrange
-            var tienda = new Tienda();
 
             // Act & Assert
-            Assert.Throws<InvalidOperationException>(() => tienda.BuscarProducto("NoExiste"));
+            Assert.Throws<InvalidOperationException>(() => _tienda.BuscarProducto("NoExiste"));
         }
 
         [Fact]
