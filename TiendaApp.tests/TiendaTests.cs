@@ -97,13 +97,12 @@ namespace TiendaApp.Tests
         public void EliminarProducto_ProductoNoExiste_NoCambio()        // Verifica si al intentar eliminar un producto no existente, no se modifica el inventario
         {
             // Arrange
-            var tienda = new Tienda();
             var producto = new Producto("Smartwatch", 200.0, "Electronics");
-            tienda.AgregarProducto(producto);   
+            _tienda.AgregarProducto(producto);   
 
             // Act & Assert
-            Assert.Throws<InvalidOperationException>(() => tienda.BuscarProducto("NoExiste"));        // Verifica si se lanza la correspondiente excepción al no encontrarse el producto en el inventario
-            var resultado = tienda.BuscarProducto("Smartwatch");        // Verifica si el producto antes añadido continúa en el inventario  
+            Assert.Throws<InvalidOperationException>(() => _tienda.BuscarProducto("NoExiste"));        // Verifica si se lanza la correspondiente excepción al no encontrarse el producto en el inventario
+            var resultado = _tienda.BuscarProducto("Smartwatch");        // Verifica si el producto antes añadido continúa en el inventario  
             Assert.NotNull(resultado);      // Verifica que el producto buscado exista, demostrando que el inventario no se vió afectado
         }
 
