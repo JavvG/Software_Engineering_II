@@ -5,8 +5,18 @@ using Moq;
 
 namespace TiendaApp.Tests
 {
+    
     public class TiendaTests
     {
+
+        private readonly Tienda _tienda;
+
+        //Inicializacion del Fixture de Tienda en entorno de Pruebas
+        public TiendaTests(TiendaFixture fixture)
+        {
+            _tienda = fixture.Tienda;
+        }
+
         // Pruebas de unidad 
 
         [Fact]      // Prueba que no requiere parámetros. Método de prueba unitaria para ser ejecutada por XUnit

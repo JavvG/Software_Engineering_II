@@ -12,7 +12,7 @@ namespace TiendaApp.Clases
 
         public TiendaFixture()
         {
-            // Inicializar la tienda con productos
+            // Inicializamos la tienda y posteriormente se agregan 3 productos
             Tienda = new Tienda();
             Producto producto_1 = new Producto("Producto A", 100.0, "Categoria 1");
             Producto producto_2 = new Producto("Producto B", 200.0, "Categoria 2");
