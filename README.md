@@ -1,12 +1,15 @@
 # Trabajo Práctico Nro. 1
+
 #### Ingeniería de Software II
 
 ## 1. Pruebas básicas realizadas
 
 ### Pruebas de unidad
+
 Se implementaron pruebas de unidad para las clases `Producto` y `Tienda`, enfocándose en validar el comportamiento de estas clases de manera aislada. Las pruebas cubren los siguientes casos:
 
 - **Producto**:
+
   - Verificación de la correcta creación de un producto.
   - Validación de las restricciones para nombre nulo, categoría nula y precios negativos.
 
@@ -17,6 +20,7 @@ Se implementaron pruebas de unidad para las clases `Producto` y `Tienda`, enfoc�
   - Eliminación de productos y verificación de su correcta eliminación.
 
 ### Pruebas de integración
+
 Aunque las pruebas de la clase `Tienda` incluyen interacción con la clase `Producto`, **no se consideran pruebas de integración completas**. Estas pruebas solo evalúan el funcionamiento interno entre clases dentro del mismo módulo de la aplicación, sin interacción con otros subsistemas o servicios externos como bases de datos o APIs.
 
 Para que las pruebas sean consideradas **pruebas de integración**, deben involucrar la interacción entre diferentes componentes del sistema (como bases de datos, APIs u otros servicios). En este caso, las pruebas se limitan a validar las interacciones dentro del dominio del código, sin componentes externos. Por lo tanto, no cumplen con los criterios de una prueba de integración.
@@ -29,7 +33,7 @@ Adicionalmente, se implementaron pruebas de unidad a las clases `Producto` y `Ti
 
 #### ¿Podrían haberse escrito las pruebas primero antes de modificar el código de la aplicación?
 
-Sí, en el enfoque TDD (Diseño Guiado por Pruebas, en español), se escribe primero una prueba que falle (porque la funcionalidad aún no está implementada) y luego se implementa la funcionalidad necesaria para que la prueba pase. Este proceso se repite para cada nueva funcionalidad o cambio en el código. 
+Sí, en el enfoque TDD (Diseño Guiado por Pruebas, en español), se escribe primero una prueba que falle (porque la funcionalidad aún no está implementada) y luego se implementa la funcionalidad necesaria para que la prueba pase. Este proceso se repite para cada nueva funcionalidad o cambio en el código.
 
 El proceso para escribir primero las pruebas, siguiendo el enfoque TDD, es el siguiente:
 
@@ -49,7 +53,6 @@ Una vez que la prueba pasa, se puede refactorizar el código mínimo escrito par
 
 Los pasos anteriores deben repetirse para cada nueva funcionalidad o modificaciones en el código que deba ser probado. Cada nueva funcionalidad debe ser probada mediante el enfoque TDD para garantizar que el código cumpla con los requisitos especificados y funcione correctamente.
 
-
 ## 3. Uso de mocks
 
 Se implementaron algunos métodos de prueba individual que utilizan instancias simuladas (mocks) de las clases `Producto` y `Tienda`. Se puede discutir el uso de estas entidades para hacer pruebas, puesto que en situaciones reales resulta más conveniente usar instancias reales para testear el funcionamiento de cada método, no obstante se trató de hacer una adaptación de las pruebas para el uso de mocks.
@@ -64,7 +67,7 @@ Son aquellas clases y métodos que se encargan de gestionar el flujo de la lógi
 
 ### Resguardos
 
-Son mecanismos que se encargan de proteger la integridad de los datos y de asegurar el flujo correcto de la aplicación. Están representados por las validaciones y manejo de excepciones que garantizan el correcto funcionamiento del sistema frente a entradas o situaciones inválidas. 
+Son mecanismos que se encargan de proteger la integridad de los datos y de asegurar el flujo correcto de la aplicación. Están representados por las validaciones y manejo de excepciones que garantizan el correcto funcionamiento del sistema frente a entradas o situaciones inválidas.
 En este caso, los métodos de la clase `Tienda` contienen **resguardos**, por ejemplo, cuando se realizan validaciones para evitar la inserción de productos nulos en el inventario de la tienda, o la búsqueda de productos inexistentes (métodos como `AgregarProducto` que lanza una excepción `ArgumentNullException` cuando se intenta ingresar un producto nulo, por ejemplo).
 
 #### ¿Qué es un 'mock'? ¿Hay otros nombres para los objetos/funciones simulados?
@@ -82,3 +85,33 @@ Algunos ejemplos que se utilizadon en este proyecto:
 
 - `mockTienda.Setup(t => t.BuscarProducto("NombreProducto")).Returns(mockProducto.Object);`, es un ejemplo de **stub**, puesto que se configura para que siempre devuelva la misma respuesta.
 - `mockTienda.Verify(t => t.BuscarProducto("NombreProducto"), Times.Once);`, si bien es un **stub**, también tiene un comportamiento **spy**.
+
+## 3. Uso de fixture
+
+Se implementa el uso de Fixture, en especifico el de Tienda, se entiende por fixture a un conjunto de datos o una configuracion de estado que se utiliza para realizar pruebas, estos mismos se cargan antes de ejecutar la/s prueba/s.
+
+### - ¿Qué ventajas ve en el uso de fixtures?
+
+Las ventajas que pueden traer el uso de Fixture son los siguientes:
+
+- **Reutilizacion de datos:** Permiten utilzar un conjunto de datos en multiples pruebas, lo que reduce significativamente la duplicacion de codigo, lo que ayuda a su entendimiento y manejo.
+
+- **Reutilizacion de datos:** Al utilizar un conjunto predefinido de datos y configuraciones garantiza que las pruebas se ejecuten en un entorno consistente.
+
+- **Facilitar la Preparación de Pruebas:** En lugar de escribir código repetido para configurar el entorno antes de cada prueba, puedes definir un fixture que realice toda la configuración necesaria de una sola vez.
+
+- **Mejora en la Mantenibilidad:** Si los datos de prueba o la configuración cambian, solo necesitas actualizar el fixture en lugar de modificar múltiples pruebas individuales. Esto simplifica el mantenimiento del código de prueba.
+
+### ¿Qué enfoque estaría aplicando?
+
+El enfoque al usar fixtures en pruebas unitarias se centra en crear un entorno de prueba controlado y que a su vez tambien sea reutilizable, esto significa que en lugar de configurar datos en cada prueba o estoados, se define un conjunto predefinido que se puede utilizar en multiples pruebas.
+
+## - Explique los conceptos de Setup y Teardown en testing.
+
+### Setup
+
+El Setup es el proceso de preparación que se lleva a cabo antes de que se ejecute una prueba. Su objetivo es configurar el estado necesario para que la prueba se realice en condiciones controladas.
+
+### Teardown
+
+El Teardown es el proceso que se ejecuta después de que se completa una prueba. Su objetivo es limpiar el entorno de prueba, restaurando cualquier cambio realizado durante la prueba para asegurar que no afecte a las pruebas subsiguientes
