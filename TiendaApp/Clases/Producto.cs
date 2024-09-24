@@ -18,7 +18,7 @@ namespace TiendaApp.Clases
             Categoria = categoria ?? throw new ArgumentNullException(nameof(categoria), "La categor a no puede ser nula.");
         }
 
-        public void ActualizarPrecio(double nuevoPrecio)
+        public virtual void ActualizarPrecio(double nuevoPrecio)
         {
             if (nuevoPrecio < 0)
                 throw new ArgumentException("El nuevo precio no puede ser negativo.");
