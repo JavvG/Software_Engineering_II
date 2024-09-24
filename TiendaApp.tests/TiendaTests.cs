@@ -6,10 +6,10 @@ using Moq;
 namespace TiendaApp.Tests
 {
     
-    public class TiendaTests
+    public class TiendaTests : IClassFixture<TiendaFixture>
     {
 
-        private readonly Tienda _tienda;
+        private  Tienda _tienda;
 
         //Inicializacion del Fixture de Tienda en entorno de Pruebas
         public TiendaTests(TiendaFixture fixture)
@@ -23,14 +23,14 @@ namespace TiendaApp.Tests
         public void AgregarProducto_ProductoValido_ProductoAgregadoCorrectamente()      // Verifica que un producto válido se agrega correctamente al inventario de la tienda y pueda ser buscado
         {
             // Arrange: preparar el entorno de prueba
-            var tienda = new Tienda();
+            
             var producto = new Producto("Laptop", 1000.0, "Electronics");
 
             // Act: ejecutar la prueba
-            tienda.AgregarProducto(producto);
+            _tienda.AgregarProducto(producto);  // Utilizacion de Fixture de Tienda
 
             // Assert: verificar el resultado
-            var productoBuscado = tienda.BuscarProducto("Laptop");      // Busca el producto en el inventario de la tienda
+            var productoBuscado = _tienda.BuscarProducto("Laptop");      // Busca el producto en el inventario de la tienda
             Assert.NotNull(productoBuscado);        // Verifica que el producto buscado no sea nulo
             Assert.Equal("Laptop", productoBuscado.Nombre);     // Verifica que el nombre del producto sea 'Laptop'
             Assert.Equal(1000.0, productoBuscado.Precio);        // Verifica que el precio del producto sea 1000
