@@ -71,12 +71,10 @@ namespace TiendaApp.Tests
         [Fact]
         public void BuscarProducto_NombreNulo_LanzaArgumentException()      // Verifica si se lanza la excepción correspondiente si al buscar un producto con el parámetro 'nombre' vacío/nulo
         {
-            // Arrange
-            var tienda = new Tienda();
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => tienda.BuscarProducto(null));
-            Assert.Throws<ArgumentException>(() => tienda.BuscarProducto(""));
+            Assert.Throws<ArgumentException>(() => _tienda.BuscarProducto(null));
+            Assert.Throws<ArgumentException>(() => _tienda.BuscarProducto(""));
         }
 
         [Fact]
