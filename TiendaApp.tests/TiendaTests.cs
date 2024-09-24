@@ -40,11 +40,9 @@ namespace TiendaApp.Tests
         [Fact]
         public void AgregarProducto_ProductoNulo_LanzaArgumentNullException()       // Verifica que se lance la excepción si se intenta introducir un producto nulo. Verifica el manejo de errores por entradas inválidas
         {
-            // Arrange
-            var tienda = new Tienda();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => tienda.AgregarProducto(null));       // Se agrega un producto nulo al inventario y se verifica que se lance la excepción esperada
+            Assert.Throws<ArgumentNullException>(() => _tienda.AgregarProducto(null));       // Se agrega un producto nulo al inventario y se verifica que se lance la excepción esperada
         }
 
         [Fact]
