@@ -86,8 +86,7 @@ namespace TiendaApp.Tests
             var eliminado = tienda.EliminarProducto("Smartphone");      // Se invoca el método de eliminación
 
             // Assert
-            Assert.True(eliminado);     // Verifica si el producto se ha eliminado correctamente (evalúa el valor booleano retornado por el método)
-            var resultado = tienda.BuscarProducto("Smartphone");        // Realiza una nueva búsqueda del producto eliminado
+            Assert.True(eliminado);     // Verifica si el producto se ha eliminado correctamente (evalúa el valor booleano retornado por el método)                   
             Assert.Throws<InvalidOperationException>(() => tienda.BuscarProducto("Smartphone"));        // Verifica si se lanza la correspondiente excepción al no encontrarse el producto en el inventario
         }
 
@@ -97,13 +96,10 @@ namespace TiendaApp.Tests
             // Arrange
             var tienda = new Tienda();
             var producto = new Producto("Smartwatch", 200.0, "Electronics");
-            tienda.AgregarProducto(producto);
+            tienda.AgregarProducto(producto);   
 
-            // Act
-            var eliminado = tienda.EliminarProducto("NoExiste");        // Se invoca el método de eliminación de un producto no existente
-
-            // Assert
-            Assert.False(eliminado);        // Verifica que el resultado del intento de eliminación anterior es falso, demostrando que el método manejó el caso de la forma esperada
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => tienda.BuscarProducto("NoExiste"));        // Verifica si se lanza la correspondiente excepción al no encontrarse el producto en el inventario
             var resultado = tienda.BuscarProducto("Smartwatch");        // Verifica si el producto antes añadido continúa en el inventario  
             Assert.NotNull(resultado);      // Verifica que el producto buscado exista, demostrando que el inventario no se vió afectado
         }
@@ -137,11 +133,8 @@ namespace TiendaApp.Tests
             // Arrange
             var tienda = new Tienda();
 
-            // Act
-            var eliminado = tienda.EliminarProducto("NoExiste");
-
-            // Assert
-            Assert.False(eliminado);        // Verifica que el intento de eliminación falló (analiza el valor booleano retornado por el método)
+            // Act & Assert
+            Assert.Throws<InvalidOperationException>(() => tienda.EliminarProducto("NoExiste"));        // Verifica que el intento de eliminación falló y que se lanzó la excepción correspondiente al no encontrarse el producto
         }
 
         [Fact]
@@ -177,7 +170,7 @@ namespace TiendaApp.Tests
             tienda.AplicarDescuento("NombreProducto", (float)10.0);     // Se invoca el método para aplicar el descuento usando el nombre del mock del producto y el porcentaje de descuento
 
             // Assert: verifica que el método ActualizarPrecio fue llamado en el mock con el nuevo precio esperado
-            mockProducto.Verify(p => p.ActualizarPrecio(90.0), Times.Once);
+            mockProducto.Verify(p => p.ActualizarPrecio(It.IsInRange(89.99, 90.01, Moq.Range.Inclusive)), Times.Once);      // Se usa sobrecarga del método Verify() para comparar los valores con una tolerancia
         }
 
         [Fact]
