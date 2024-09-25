@@ -220,11 +220,20 @@ namespace TiendaApp.Tests
         }
 
         [Fact]
-        public void CalcularTotal_DeCarrito()                                                                                       
+        public void CalcularTotal_DeCarrito()   
         {
-            
+            _tienda.AgregarAlCarrito("Producto A");
+            _tienda.AgregarAlCarrito("Producto B");
+            _tienda.AgregarAlCarrito("Producto C");
 
-     
+            _tienda.AplicarDescuento("Producto A", (float)10.0);
+            _tienda.AplicarDescuento("Producto B", (float)20.0);
+
+            double totalEsperado = (100 * 0.9) + (200 * 0.8) + 300; // Precio después de descuentos
+            double totalCalculado = _tienda.CalcularTotalCarrito();
+
+            Assert.Equal(totalEsperado, totalCalculado);
+
         }
     }
 }
