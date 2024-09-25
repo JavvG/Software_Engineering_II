@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace TiendaApp.Clases
 {
-    [TestFixture]
     public class TiendaFixture
     {
         public Tienda Tienda { get; private set; }

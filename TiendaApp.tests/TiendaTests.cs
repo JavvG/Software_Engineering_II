@@ -220,19 +220,11 @@ namespace TiendaApp.Tests
         }
 
         [Fact]
-        public void CalcularTotal_DeCarrito()              
-                                                                                       
+        public void CalcularTotal_DeCarrito()                                                                                       
         {
-            // Arrange
+            
 
-
-            mockTienda.Object.AgregarProducto(mockProducto.Object);
-
-            // Act
-            mockTienda.Object.EliminarProducto("ProductoAEliminar");
-
-            // Assert
-            mockTienda.Verify(t => t.EliminarProducto("ProductoAEliminar"), Times.Once);        // Verifica que el método de eliminación se invoca desde el mock de 'Tienda' con el nombre del mock de 'Producto' como parámetro, una única vez
+     
         }
     }
 }

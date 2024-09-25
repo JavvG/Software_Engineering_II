@@ -8,9 +8,12 @@ namespace TiendaApp.Clases
     {
         private List<Producto> Inventario { get; set; }
 
+        private List<String> Carrito { get; set; }
+
         public Tienda()
         {
             Inventario = new List<Producto>();
+            Carrito = new List<String>();
         }
 
         public virtual void AgregarProducto(Producto producto)
@@ -71,16 +74,27 @@ namespace TiendaApp.Clases
             producto.ActualizarPrecio(nuevoPrecio);
         }
 
+        public void AgregarAlCarrito(string nombre)
+        {
+            if (string.IsNullOrEmpty(nombre))
+                throw new ArgumentException("El nombre del producto no puede ser nulo o vacío.");
+
+            var nombreProducto = BuscarProducto(nombre).Nombre;
+
+            Carrito.Add(nombreProducto);
+        }
+
+
         public double CalcularTotalCarrito()
         {
-            if (carrito == null || !carrito.Any())
+            if (Carrito == null || !Carrito.Any())
             {
                 throw new ArgumentException("La lista de nombres de productos no puede ser nula o vacía.");
             }
 
             double total = 0;
 
-            foreach(var nombre in carrito)
+            foreach(var nombre in Carrito)
             {
                 var producto = BuscarProducto(nombre);
                 total += producto.Precio;
