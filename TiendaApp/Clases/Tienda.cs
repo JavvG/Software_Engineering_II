@@ -71,16 +71,16 @@ namespace TiendaApp.Clases
             producto.ActualizarPrecio(nuevoPrecio);
         }
 
-        public double CalcularTotalCarrito(List<string> nombresProductos)
+        public double CalcularTotalCarrito(List<string> carrito)
         {
-            if (nombresProductos == null || !nombresProductos.Any())
+            if (carrito == null || !carrito.Any())
             {
                 throw new ArgumentException("La lista de nombres de productos no puede ser nula o vacía.");
             }
 
             double total = 0;
 
-            foreach(var nombre in nombresProductos)
+            foreach(var nombre in carrito)
             {
                 var producto = BuscarProducto(nombre);
                 total += producto.Precio;
