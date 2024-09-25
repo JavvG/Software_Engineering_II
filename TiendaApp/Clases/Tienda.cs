@@ -84,6 +84,11 @@ namespace TiendaApp.Clases
             Carrito.Add(nombreProducto);
         }
 
+        public void VaciarCarrito()
+        {
+            Carrito.Clear(); // Método para vaciar el carrito
+        }
+
 
         public double CalcularTotalCarrito()
         {
