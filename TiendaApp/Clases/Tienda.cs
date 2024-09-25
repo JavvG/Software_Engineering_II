@@ -71,7 +71,7 @@ namespace TiendaApp.Clases
             producto.ActualizarPrecio(nuevoPrecio);
         }
 
-        public double CalcularTotalCarrito(List<string> carrito)
+        public double CalcularTotalCarrito()
         {
             if (carrito == null || !carrito.Any())
             {
