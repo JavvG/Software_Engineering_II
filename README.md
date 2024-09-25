@@ -86,7 +86,7 @@ Algunos ejemplos que se utilizadon en este proyecto:
 - `mockTienda.Setup(t => t.BuscarProducto("NombreProducto")).Returns(mockProducto.Object);`, es un ejemplo de **stub**, puesto que se configura para que siempre devuelva la misma respuesta.
 - `mockTienda.Verify(t => t.BuscarProducto("NombreProducto"), Times.Once);`, si bien es un **stub**, también tiene un comportamiento **spy**.
 
-## 3. Uso de fixture
+## 4. Uso de fixture
 
 Se implementa el uso de Fixture, en especifico el de Tienda, se entiende por fixture a un conjunto de datos o una configuracion de estado que se utiliza para realizar pruebas, estos mismos se cargan antes de ejecutar la/s prueba/s.
 
@@ -106,7 +106,7 @@ Las ventajas que pueden traer el uso de Fixture son los siguientes:
 
 El enfoque al usar fixtures en pruebas unitarias se centra en crear un entorno de prueba controlado y que a su vez tambien sea reutilizable, esto significa que en lugar de configurar datos en cada prueba o estoados, se define un conjunto predefinido que se puede utilizar en multiples pruebas.
 
-## - Explique los conceptos de Setup y Teardown en testing.
+### - Explique los conceptos de Setup y Teardown en testing.
 
 ### Setup
 
@@ -115,3 +115,20 @@ El Setup es el proceso de preparación que se lleva a cabo antes de que se ejecu
 ### Teardown
 
 El Teardown es el proceso que se ejecuta después de que se completa una prueba. Su objetivo es limpiar el entorno de prueba, restaurando cualquier cambio realizado durante la prueba para asegurar que no afecte a las pruebas subsiguientes
+
+## 5. Pruebas de Integración y Cobertura Completa
+
+### ¿Puede describir una situación de desarrollo para este caso en donde se plantee pruebas de integración ascendente? Describa la situación.
+
+Para una prueba de integracion de una forma ascendente tendriamos que ir trabajando en diferentes capaz, de una forma ascendente hasta nuestra prueba de integracion más completa, para el caso en especifico de probar el metodo de calcular_total_carrito, el recorrido seria el siguiente:
+
+1. **Pruebas unitarias en el nivel de producto:** Antes de integrar la funcionalidad del carrito, se prueba la clase Producto de forma individual. Estas pruebas verificarán que:
+
+- Se pueden crear productos con atributos válidos (nombre, precio, categoria).
+- Los métodos de ActualizarPrecio funcionan correctamente.
+
+2. **Integración del inventario en la tienda:** Una vez que los productos se han probado de forma aislada, se integra la clase Tienda para gestionar el inventario.
+
+3. **Integración del carrito de compras:** Después de probar que la tienda puede manejar su inventario, se integra el carrito de compras. En este paso, las pruebas verificarán que los productos pueden ser agregados al carrito y que el total del carrito puede calcularse correctamente.
+
+4. **Integración de descuentos y flujo completo del metodo calcular_total_carrito:** Después de probar que la tienda puede manejar su inventario, se integra el carrito de compras. En este paso, las pruebas verificarán que los productos pueden ser agregados al carrito y que el total del carrito puede calcularse correctamente.
